@@ -1,0 +1,167 @@
+body {
+  font-family: Verdana, sans-serif;
+  background: #352928;
+  color: #D8C7DE;
+  margin: 20px;
+}
+
+.screen {
+  text-align: center;
+  max-width: 520px;
+  margin: 0 auto;
+  padding: 25px;
+  border: 2px solid #D8C7DE;
+  background: #352928;
+}
+
+.hidden {
+  display: none;
+}
+
+h1, h2 {
+  color: #D8C7DE;
+}
+
+button {
+  display: block;
+  margin: 10px auto;
+  padding: 10px 22px;
+  font-size: 16px;
+  cursor: pointer;
+  border: 2px solid #D8C7DE;
+  background: #352928;
+  color: #D8C7DE;
+}
+
+button:hover {
+  background: #D8C7DE;
+  color: #352928;
+}
+
+#board {
+  display: grid;
+  gap: 8px;
+  justify-content: center;
+  margin: 20px auto;
+}
+
+#board-caption {
+  text-align: center;
+  margin: 10px 0;
+  font-size: 16px;
+  color: #D8C7DE;
+}
+
+.card {
+  width: 100px;
+  height: 100px;
+  background: #352928;
+  border: 2px solid #D8C7DE;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 64px;
+  user-select: none;
+  animation: flip 0.2s;
+}
+
+@keyframes flip {
+  from { transform: scale(0.9); }
+  to   { transform: scale(1);   }
+}
+
+.card span {
+  display: none;
+}
+
+.card.flipped,
+.card.matched {
+  background: #D8C7DE;
+}
+
+.card.flipped span,
+.card.matched span {
+  display: block;
+}
+
+.card.matched {
+  background: #D8C7DE;
+  border: 4px solid #352928;
+  cursor: default;
+}
+
+/* === Мобильная версия === */
+@media (max-width: 600px) {
+  body {
+    margin: 0;
+    padding: 12px;
+    font-size: 16px;
+  }
+
+  .screen {
+    padding: 20px 12px;
+    max-width: 100%;
+    border-left: none;
+    border-right: none;
+  }
+
+  h1 { font-size: 26px; margin: 12px 0; }
+  h2 { font-size: 20px; margin: 10px 0; }
+
+  button {
+    width: 100%;
+    padding: 16px;
+    font-size: 18px;
+    margin: 8px 0;
+  }
+
+  #stats {
+    font-size: 20px;
+    margin-bottom: 12px;
+  }
+
+  #board {
+    gap: 6px;
+    margin: 15px auto;
+    width: 100%;
+  }
+
+  #board-caption {
+    font-size: 18px;
+    margin: 10px 0;
+  }
+
+  .card {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    font-size: 48px;
+    border-width: 2px;
+  }
+
+  .card.matched {
+    border-width: 3px;
+  }
+
+  .offline-dot {
+    font-size: 50px;
+  }
+}
+
+/* === Экран "Нет интернета" === */
+#offline-screen {
+  border-color: #D8C7DE;
+}
+
+.offline-dot {
+  font-size: 60px;
+  color: #D8C7DE;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%   { opacity: 1; }
+  50%  { opacity: 0.2; }
+  100% { opacity: 1; }
+}
